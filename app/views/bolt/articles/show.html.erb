@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @bolt_article.title %>
+</p>
+
+<p>
+  <b>Alias:</b>
+  <%= @bolt_article.alias %>
+</p>
+
+<p>
+  <b>Category:</b>
+  <%= @bolt_article.category %>
+</p>
+
+<p>
+  <b>Status:</b>
+  <%= @bolt_article.status %>
+</p>
+
+<p>
+  <b>Access:</b>
+  <%= @bolt_article.access %>
+</p>
+
+<p>
+  <b>Featured:</b>
+  <%= @bolt_article.featured %>
+</p>
+
+<p>
+  <b>Article text:</b>
+  <%= @bolt_article.article_text %>
+</p>
+
+
+<%= link_to 'Edit', edit_bolt_article_path(@bolt_article) %> |
+<%= link_to 'Back', bolt_articles_path %>

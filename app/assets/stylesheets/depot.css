@@ -1,0 +1,22 @@
+#banner {
+background:#707070;
+padding-top: 10px;
+padding-bottom: 10px;
+border-bottom: 2px solid;
+font: small-caps 40px/40px "Times New Roman", serif;
+color: ;
+text-align: center;
+}
+#banner img {
+float: left;
+}
+#columns {
+background: #141;
+}
+#main {
+margin-left;
+padding-top: 4ex;
+padding-left: 2em;
+background: white;
+}
+

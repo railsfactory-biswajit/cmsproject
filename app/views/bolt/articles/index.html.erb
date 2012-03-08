@@ -1,0 +1,121 @@
+<h2>Listing articles</h2>
+<p style="text-align:right;">new&nbsp;&nbsp;edit&nbsp;&nbsp;delete</p>
+<p style="text-align:right;"><a  href="/bolt/articles/new" ><%= image_tag("new.png") %></a>&nbsp;&nbsp;
+<a id="edit" onclick="edit_rec();" href="javascript:void(0)"><%= image_tag("edit.png",:size=>"20x20") %></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a id="delete" href="javascript:void(0)" onclick="delete_rec();"><%= image_tag("delete.png") %></a>
+&nbsp;&nbsp;</p><br/><br/>
+
+<style type="text/css">
+table { border: 1px solid black; }
+
+#container {
+  
+    width: 100%; }
+td { border: 3px solid white; }
+th { border: 3px solid white; }              
+  
+</style>
+<script type="text/javascript">
+
+
+
+function delete_rec()
+{
+ if($(".selall:checkbox:checked").length<1)
+{
+alert("please select atleast one record")
+}
+else if(confirm("Are you sure want to delete the record?"))
+{
+       vals=[]
+       j=0
+       var s=$(".selall:checkbox:checked")
+	for(i=0;i<s.length;i++)
+	{		
+		vals[j]=s[i].value;
+		j++;
+	}
+	window.location.href="/bolt/articles/destroy_multiple/"+vals
+
+}
+return false;
+}
+
+function edit_rec()
+{
+if($(".selall:checkbox:checked").length<1)
+{
+alert("please select atleast one record")
+}
+else if($(".selall:checkbox:checked").length>1)
+{
+alert("please select only one record")
+return false;
+}
+else
+{
+	window.location.href="/bolt/articles/edit/"+$(".selall:checkbox:checked").val()
+}
+}
+function select_all()
+{
+
+if($(".selall:checkbox:checked").length<1 && $('#chkunchk').attr("checked")==true)
+{	
+	$('.selall').attr("checked", "checked");
+}
+else
+{
+
+$('.selall').attr("checked", false);
+}
+}
+function test()
+{
+totel=$(".selall:checkbox").length;
+tochk=$(".selall:checkbox:checked").length
+if(totel!=tochk)
+{
+	$('#chkunchk').attr("checked", false);
+}
+else
+{
+		$('#chkunchk').attr("checked", true);
+}
+}
+
+
+
+</script>
+
+<table id="container" bgcolor="Cornsilk" align="left">
+  <tr>
+  	<td><input type="checkbox" id="chkunchk"  onclick="select_all()"/></td>
+    <td><font color="blue">Title</font></td>
+    <td><font color="blue">Alias</font></th>
+    <td><font color="blue">Category</font></td>
+    <td><font color="blue">Status</font></td>
+    <td><font color="blue">Access</font></td>
+    <td><font color="blue">Featured</font></td>
+    <td><font color="blue">Article text</font></td>
+        
+  </tr>
+
+<% @bolt_articles.each do |bolt_article| %>
+  <tr>
+  <td style="px"><input class='selall'  type='checkbox' id='chk_<%=bolt_article.id%>'  name ='checkbox' onclick="test()"  value='<%=bolt_article.id %>'></td>
+
+    <td><%= bolt_article.title %></td>
+    <td><%= bolt_article.alias %></td>
+    <td><%= bolt_article.category %></td>
+    <td><%= bolt_article.status %></td>
+    <td><%= bolt_article.access %></td>
+    <td><%= bolt_article.featured %></td>
+    <td><%=h bolt_article.article_text.html_safe %></td>
+    
+    
+  </tr>
+<% end %>
+</table>
+<br/><br/>
+

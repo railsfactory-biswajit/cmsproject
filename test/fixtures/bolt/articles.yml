@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  title: MyString
+  alias: MyString
+  category: MyString
+  status: MyString
+  access: MyString
+  featured: false
+  article_text: MyText
+
+two:
+  title: MyString
+  alias: MyString
+  category: MyString
+  status: MyString
+  access: MyString
+  featured: false
+  article_text: MyText

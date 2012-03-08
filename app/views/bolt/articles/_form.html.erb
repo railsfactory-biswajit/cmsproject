@@ -1,0 +1,47 @@
+<fieldset class="biswa">
+<%= form_for(@bolt_article) do |f| %>
+  <% if @bolt_article.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@bolt_article.errors.count, "error") %> prohibited this bolt_article from being saved:</h2>
+
+      <ul>
+      <% @bolt_article.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <%= f.text_field :title%>
+  </div>
+  <div class="field"><br/>
+    <%= f.label :alias %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <%= f.text_field :alias %>
+  </div>
+  <div class="field"><br/>
+    <%= f.label :category %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <%= f.text_field :category%>
+  </div>
+  <div class="field"><br/>
+    <%= f.label :status %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <%= f.select :status, Bolt::Article::STATUS_TYPES.map{|key, value| [value, key]} %>
+  </div>
+  <div class="field"><br/>
+    <%= f.label :access %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	
+   <%= f.select :access, Bolt::Article::ACCESS_TYPES.map{|key, value| [value, key]} %>
+  </div>
+  <div class="field"><br/>
+    <%= f.label :featured %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <%= f.select :featured, Bolt::Article::FEATURED_TYPES.map{|key, value| [value, key]} %>
+  </div>
+  <div class="field"><br/>
+    <%= f.label :article_text %>
+    <%= f.text_area :article_text,:cols => "100"%>
+  </div>
+  <div class="actions"><br/>
+    <%= f.submit "Save" %>
+  </div>
+<% end %>
+</fieldset>
